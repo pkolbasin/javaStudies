@@ -8,5 +8,6 @@ public class Demo {
         User user3 = new User();
 
         System.out.println(UserRepository.users(user1, user2, user3).getUsersIds);
+
     }
 }

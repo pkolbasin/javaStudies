@@ -57,4 +57,40 @@ public class UserRepository {
         }
         return nameById;
     }
+
+    public User getUserByName(String name) {
+        User user[] = new User();
+        user[] = null;
+        for (int el = 0; el < users.length; el++) {
+            if (name == users[el].getName) {
+                user[] =users[el];
+                break;
+            }
+        }
+        return user;
+    }
+
+    public User getUserById(long id) {
+        User user[] = new User();
+        user[] = null;
+        for (int el = 0; el < users.length; el++) {
+            if (id == users[el].getId) {
+                user[] =users[el];
+                break;
+            }
+        }
+        return user;
+    }
+
+    public User getUserBySessionId(String sessionId) {
+        User user[] = new User();
+        user[] = null;
+        for (int el = 0; el < users.length; el++) {
+            if (sessionId == users[el].getSessionid) {
+                user[] =users[el];
+                break;
+            }
+        }
+        return user;
+    }
 }
