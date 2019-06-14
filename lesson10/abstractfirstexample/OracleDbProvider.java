@@ -1,4 +1,4 @@
-package lesson10.abstractexample;
+package lesson10.abstractfirstexample;
 
 public class OracleDbProvider extends DbProvider {
    @Override

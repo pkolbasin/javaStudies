@@ -4,7 +4,7 @@ import lesson9.utils.Checker;
 
 public class Demo {
     public static void main(String[] args) {
-        Company company = new Company();
+        Company company = new Company("lg", "japin");
         System.out.println(company.countryFounded);
         System.out.println(company.getName());
 

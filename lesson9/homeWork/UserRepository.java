@@ -3,6 +3,10 @@ package lesson9.homeWork;
 public class UserRepository {
 
 
+    public static void main(String[] args) {
+
+    }
+
     private User[] users;
 
 
@@ -44,6 +48,34 @@ public class UserRepository {
         return ids;
     }
 
+
+    public User getUserByName(String name) {
+        for (User user : users) {
+            if (user != null && user.getName() == name)
+                return user;
+
+        }
+        return null;
+    }
+
+    private User findById(long id) {
+        for (User user : users) {
+            if (user != null && user.getId() == id)
+                return user;
+
+        }
+        return null;
+    }
+
+    public User getUserBySessionId(String sessionId) {
+        for (User user : users) {
+            if (user != null && user.getSessionId() == sessionId)
+                return user;
+
+        }
+        return null;
+    }
+
     public String getUserNameById(long id) {
         String nameById = null;
         for (int el = 0; el < users.length; el++) {
@@ -58,39 +90,42 @@ public class UserRepository {
         return nameById;
     }
 
-    public User getUserByName(String name) {
-        User user[] = new User();
-        user[] = null;
-        for (int el = 0; el < users.length; el++) {
-            if (name == users[el].getName) {
-                user[] =users[el];
-                break;
+    public User save(User user) {
+        if (user != null && findById(user.getId()) == null) {
+            for (int el = 0; el < users.length; el++) {
+
+                if (users[el] == null) {
+                    return users[el] = user;
+                }
             }
+
         }
-        return user;
+
+
+        return null;
     }
 
-    public User getUserById(long id) {
-        User user[] = new User();
-        user[] = null;
-        for (int el = 0; el < users.length; el++) {
-            if (id == users[el].getId) {
-                user[] =users[el];
-                break;
+    public User update(User user) {
+        if (user != null && findById(user.getId()) != null) {
+            for (int el = 0; el < users.length; el++) {
+
+                if (users[el].getId() == user.getId()) {
+                    return users[el] = user;
+                }
             }
+
         }
-        return user;
+        return null;
     }
 
-    public User getUserBySessionId(String sessionId) {
-        User user[] = new User();
-        user[] = null;
-        for (int el = 0; el < users.length; el++) {
-            if (sessionId == users[el].getSessionid) {
-                user[] =users[el];
-                break;
+    public void delete(long id) {
+        if (findById(id) != null) {
+            for (int el = 0; el < users.length; el++) {
+                if (users[el] != null && users[el].getId() == id) {
+                    users[el] = null;
+                }
             }
         }
-        return user;
     }
+
 }

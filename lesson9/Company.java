@@ -1,8 +1,8 @@
 package lesson9;
 
 public class Company {
-    private String name;
-    private String countryFounded;
+    protected String name;
+    protected String countryFounded;
 
     protected String code;
     public int someField;
