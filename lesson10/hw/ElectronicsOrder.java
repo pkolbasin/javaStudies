@@ -32,8 +32,8 @@ public class ElectronicsOrder extends Order {
     @Override
     public void calculatePrice() {
         double deliveryPrice;
-        double discount = 0.0;
-        if (getShipToCity() == "Киев" || getShipToCity() == "Одесса") {
+        double discount;
+        if (getShipToCity() != null && getShipToCity() == "Киев" || getShipToCity() == "Одесса") {
             deliveryPrice = getBasePrice() * 0.1;
         } else {
             deliveryPrice = getBasePrice() * 0.15;
@@ -41,6 +41,8 @@ public class ElectronicsOrder extends Order {
 
         if (getBasePrice() > 1000) {
             discount = getBasePrice() + deliveryPrice * 0.05;
+        } else {
+            discount = 0;
         }
 
         setTotalPrice(getBasePrice() + deliveryPrice - discount);
