@@ -31,19 +31,9 @@ public class ElectronicsOrder extends Order {
 
     @Override
     public void calculatePrice() {
-        double deliveryPrice;
-        double discount;
-        if (getShipToCity() != null && (getShipToCity() == "Киев" || getShipToCity() == "Одесса")) {
-            deliveryPrice = getBasePrice() * 0.1;
-        } else {
-            deliveryPrice = getBasePrice() * 0.15;
-        }
-
-        if (getBasePrice() > 1000) {
-            discount = getBasePrice() + deliveryPrice * 0.05;
-        } else {
-            discount = 0;
-        }
+        double deliveryPrice = getShipToCity() != null && (getShipToCity() == "Киев" || getShipToCity() == "Одесса") ?
+                getBasePrice() * 0.1 : getBasePrice() * 0.15;
+        double discount = getBasePrice() > 1000 ? (getBasePrice() + deliveryPrice) * 0.05 : 0;
 
         setTotalPrice(getBasePrice() + deliveryPrice - discount);
     }
