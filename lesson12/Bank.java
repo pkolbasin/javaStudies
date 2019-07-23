@@ -5,16 +5,16 @@ public abstract class Bank {
     private String bankCountry;
     private Currency currency;
     private int numberOfEmployees;
-    private double arvSalaryOfEmployee;
+    private double avrSalaryOfEmployee;
     private long rating;
     private long totalCapital;
 
-    public Bank(long id, String bankCountry, Currency currency, int numberOfEmployees, double arvSalaryOfEmployee, long rating, long totalCapital) {
+    public Bank(long id, String bankCountry, Currency currency, int numberOfEmployees, double avrSalaryOfEmployee, long rating, long totalCapital) {
         this.id = id;
         this.bankCountry = bankCountry;
         this.currency = currency;
         this.numberOfEmployees = numberOfEmployees;
-        this.arvSalaryOfEmployee = arvSalaryOfEmployee;
+        this.avrSalaryOfEmployee = avrSalaryOfEmployee;
         this.rating = rating;
         this.totalCapital = totalCapital;
     }
@@ -25,10 +25,10 @@ public abstract class Bank {
 
     public abstract double getMonthlyRate();
 
-    public abstract double getComission(int amount);
+    public abstract double getCommission(int amount);
 
     public double moneyPaidMonthlyForSalary() {
-        return numberOfEmployees * arvSalaryOfEmployee;
+        return numberOfEmployees * avrSalaryOfEmployee;
     }
 
     public long getId() {
@@ -47,8 +47,8 @@ public abstract class Bank {
         return numberOfEmployees;
     }
 
-    public double getArvSalaryOfEmployee() {
-        return arvSalaryOfEmployee;
+    public double getAvrSalaryOfEmployee() {
+        return avrSalaryOfEmployee;
     }
 
     public long getRating() {
@@ -75,8 +75,8 @@ public abstract class Bank {
         this.numberOfEmployees = numberOfEmployees;
     }
 
-    public void setArvSalaryOfEmployee(double arvSalaryOfEmployee) {
-        this.arvSalaryOfEmployee = arvSalaryOfEmployee;
+    public void setAvrSalaryOfEmployee(double avrSalaryOfEmployee) {
+        this.avrSalaryOfEmployee = avrSalaryOfEmployee;
     }
 
     public void setRating(long rating) {

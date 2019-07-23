@@ -2,8 +2,8 @@ package lesson12;
 
 public class EUBank extends Bank {
 
-    public EUBank(long id, String bankCountry, Currency currency, int numberOfEmployees, double arvSalaryOfEmployee, long rating, long totalCapital) {
-        super(id, bankCountry, currency, numberOfEmployees, arvSalaryOfEmployee, rating, totalCapital);
+    public EUBank(long id, String bankCountry, Currency currency, int numberOfEmployees, double avrSalaryOfEmployee, long rating, long totalCapital) {
+        super(id, bankCountry, currency, numberOfEmployees, avrSalaryOfEmployee, rating, totalCapital);
     }
 
     @Override
@@ -22,7 +22,7 @@ public class EUBank extends Bank {
     }
 
     @Override
-    public double getComission(int amount) {
+    public double getCommission(int amount) {
         return 0;
     }
 }

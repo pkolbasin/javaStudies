@@ -2,9 +2,10 @@ package lesson12;
 
 public class USBank extends Bank {
 
-    public USBank(long id, String bankCountry, Currency currency, int numberOfEmployees, double arvSalaryOfEmployee, long rating, long totalCapital) {
-        super(id, bankCountry, currency, numberOfEmployees, arvSalaryOfEmployee, rating, totalCapital);
+    public USBank(long id, String bankCountry, Currency currency, int numberOfEmployees, double avrSalaryOfEmployee, long rating, long totalCapital) {
+        super(id, bankCountry, currency, numberOfEmployees, avrSalaryOfEmployee, rating, totalCapital);
     }
+
 
     @Override
     public int getLimitOfWithdrawal() {
@@ -29,7 +30,7 @@ public class USBank extends Bank {
     }
 
     @Override
-    public double getComission(int amount) {
+    public double getCommission(int amount) {
         if (getCurrency() == Currency.USD) {
             if (amount <= 1000)
                 return 0.05;

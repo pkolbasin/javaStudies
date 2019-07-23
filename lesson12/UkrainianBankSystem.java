@@ -7,12 +7,12 @@ public class UkrainianBankSystem implements BankSystem {
     public void withdraw(User user, int amount) {
         //проверить, можно ли снять - проверить лимит и достаточно ли денег
         //снять
- /*     int limitOFWithdrawal = amount + user.getBank().getComission(amount);
-      if(amount + user.getBank().getComission(amount)> limitOFWithdrawal){
+ /*     int limitOFWithdrawal = amount + user.getBank().getCommission(amount);
+      if(amount + user.getBank().getCommission(amount)> limitOFWithdrawal){
          prinWithdrawalErrorMsg(amount, user);
           return;
       }
-        if(amount + user.getBank().getComission(amount)> user.getBalance()){
+        if(amount + user.getBank().getCommission(amount)> user.getBalance()){
             prinWithdrawalErrorMsg(amount, user);
             return;
         }*/
@@ -20,7 +20,7 @@ public class UkrainianBankSystem implements BankSystem {
 
         if (!checkWithdraw(user, amount))
             return;
-        user.setBalance(user.getBalance() - amount - amount * user.getBank().getComission(amount));
+        user.setBalance(user.getBalance() - amount - amount * user.getBank().getCommission(amount));
     }
 
     @Override
@@ -36,7 +36,7 @@ public class UkrainianBankSystem implements BankSystem {
             return;
         //todo check fund rules
 
-        fromUser.setBalance(fromUser.getBalance() - amount - amount * fromUser.getBank().getComission(amount));
+        fromUser.setBalance(fromUser.getBalance() - amount - amount * fromUser.getBank().getCommission(amount));
         //todo fund
 
 
@@ -54,7 +54,7 @@ public class UkrainianBankSystem implements BankSystem {
 
 
     private boolean checkWithdrawLimits(User user, int amount, double limit) {
-        if (amount + user.getBank().getComission(amount) > limit) {
+        if (amount + user.getBank().getCommission(amount) > limit) {
             printWithdrawalErrorMsg(amount, user);
             return false;
         }
