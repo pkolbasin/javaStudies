@@ -25,26 +25,28 @@ public class UkrainianBankSystem implements BankSystem {
 
     @Override
     public void fund(User user, int amount) {
-//todo at home
+        if (!checkFund(user, amount))
+            return;
+        user.setBalance(user.getBalance() + amount - amount * user.getBank().getCommission(amount));
     }
 
     @Override
     public void transferMoney(User fromUser, User toUser, int amount) {
         // снимаем деньги
         //пополняем
-        if (!checkWithdraw(fromUser, amount))
+        if (!checkWithdraw(fromUser, amount) && !checkFund(toUser, amount))
             return;
-        //todo check fund rules
+
 
         fromUser.setBalance(fromUser.getBalance() - amount - amount * fromUser.getBank().getCommission(amount));
-        //todo fund
+        toUser.setBalance(toUser.getBalance() + amount - amount * toUser.getBank().getCommission(amount));
 
 
     }
 
     @Override
     public void paySalary(User user) {
-//todo at home
+        user.setBalance(user.getBalance() + user.getSalary());
     }
 
     private boolean checkWithdraw(User user, int amount) {
@@ -61,7 +63,18 @@ public class UkrainianBankSystem implements BankSystem {
         return true;
     }
 
+    private boolean checkFund(User user, int amount) {
+        if (amount - user.getBank().getCommission(amount) > user.getBank().getLimitOfFunding()) {
+            printFundErrorMsg(amount, user);
+            return false;
+        }
+        return true;
+    }
     private void printWithdrawalErrorMsg(int amount, User user) {
         System.err.println("Can't withdraw money" + amount + "from user" + user.toString());
+    }
+
+    private void printFundErrorMsg(int amount, User user) {
+        System.err.println("Can't found money" + amount + "to user" + user.toString());
     }
 }
