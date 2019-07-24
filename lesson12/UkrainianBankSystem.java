@@ -48,7 +48,7 @@ public class UkrainianBankSystem implements BankSystem {
     }
 
     private void printFundingErrorMsg(User user, int amount) {
-        System.err.println("Can't replenish on " + amount + " of user " + user.toString());
+        System.err.println("Can't fund on " + amount + " to user " + user.toString());
     }
 
     @Override
