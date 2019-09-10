@@ -10,21 +10,33 @@ public class ChinaBank extends Bank {
     public int getLimitOfWithdrawal() {
         if (getCurrency() == Currency.USD)
             return 100;
-        return 150;
+        else if (getCurrency() == Currency.EUR)
+            return 150;
+        else
+            kakaCur();
+        return 0;
     }
 
     @Override
     public int getLimitOfFunding() {
         if (getCurrency() == Currency.EUR)
             return 5000;
-        return 10000;
+        else if (getCurrency() == Currency.USD)
+            return 10000;
+        else
+            kakaCur();
+        return 0;
     }
 
     @Override
     public double getMonthlyRate() {
         if (getCurrency() == Currency.EUR)
             return 0.00;
-        return 0.01;
+        else if (getCurrency() == Currency.USD)
+            return 0.01;
+        else
+            kakaCur();
+        return 0;
     }
 
     @Override
@@ -41,5 +53,10 @@ public class ChinaBank extends Bank {
             else
                 return 0.11;
         }
+    }
+
+    public void kakaCur() {
+        System.err.println("bad Currency");
+
     }
 }
