@@ -17,12 +17,14 @@ public class UserRepository {
         if (user != null) {
             for (int el = 0; el < users.length; el++) {
                 if (!users[el].equals(user)) {
-                    if (users[el] == null) {
-                        return users[el] = user;
-                    }
+                    return null;
+                }
+                if (users[el] == null) {
+                    return users[el] = user;
                 }
             }
         }
+
         return null;
     }
 
