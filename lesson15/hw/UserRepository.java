@@ -16,9 +16,10 @@ public class UserRepository {
     public User save(User user) {
         if (user != null) {
             for (int el = 0; el < users.length; el++) {
-
-                if (users[el] == null) {
-                    return users[el] = user;
+                if (!users[el].equals(user)) {
+                    if (users[el] == null) {
+                        return users[el] = user;
+                    }
                 }
             }
         }
