@@ -62,7 +62,7 @@ public class UserRepository {
     }
 
 
-    public User findUser(User user) {
+  /*  public User findUser(User user) {
         if (user != null) {
             for (int el = 0; el < users.length; el++) {
                 if (users[el] != null && users[el].equals(user) && users[el].hashCode() == user.hashCode())
@@ -71,5 +71,5 @@ public class UserRepository {
         }
         return null;
 
-    }
+    }*/
 }
