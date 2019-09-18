@@ -23,15 +23,15 @@ public class UserRepository {
 
 
     public User save(User user) {
-        if (users != null && user != null && findById(user.getId()) == null) {
-            for (User userInBase : users) {
-                if (userInBase == null) {
-                    userInBase = user;
-                    return user;
+        if (user != null && findById(user.getId()) == null) {
+            for (int el = 0; el < users.length; el++) {
+
+                if (users[el] == null) {
+                    return users[el] = user;
                 }
             }
-        }
 
+        }
 
         return null;
     }
