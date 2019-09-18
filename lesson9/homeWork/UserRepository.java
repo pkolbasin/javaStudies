@@ -3,9 +3,7 @@ package lesson9.homeWork;
 public class UserRepository {
 
 
-    public static void main(String[] args) {
 
-    }
 
     private User[] users;
 

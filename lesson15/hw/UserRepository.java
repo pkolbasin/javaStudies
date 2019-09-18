@@ -3,37 +3,49 @@ package lesson15.hw;
 public class UserRepository {
     private User[] users;
 
+
     public UserRepository(User[] users) {
         this.users = users;
     }
 
     public User[] getUsers() {
         return users;
-
     }
 
-    //  save user
+
+    public User findById(long id) {
+        for (User user : users) {
+            if (user != null && user.getId() == id)
+                return user;
+        }
+        return null;
+    }
+
+
     public User save(User user) {
-        if (user != null) {
-            for (int el = 0; el < users.length; el++) {
-                if (!users[el].equals(user)) {
+        if (user != null && findById(user.getId()) == null) {
+            for (User userInBase : users) {
+
+                if (userInBase.equals(user)) {
                     return null;
                 }
-                if (users[el] == null) {
-                    return users[el] = user;
+                if (userInBase == null) {
+                    return userInBase = user;
                 }
             }
         }
 
+
         return null;
     }
 
-    public User update(User user) {
-        if (user != null) {
-            for (int el = 0; el < users.length; el++) {
 
-                if (users[el].getId() == user.getId() && !user.equals(users[el]) && user.hashCode() != users[el].hashCode()) {
-                    return users[el] = user;
+    public User update(User user) {
+        if (user != null && findById(user.getId()) != null) {
+            for (User userInBase : users) {
+
+                if (userInBase.getId() == user.getId() && user.equals(userInBase) && user.hashCode() != userInBase.hashCode()) {
+                    return userInBase = user;
                 }
             }
 
@@ -42,20 +54,24 @@ public class UserRepository {
     }
 
     public void delete(long id) {
-        for (int el = 0; el < users.length; el++) {
-            if (users[el] != null && users[el].getId() == id) {
-                users[el] = null;
+        if (findById(id) != null) {
+            for (User userInBase : users) {
+                if (userInBase.equals(findById(id)) && userInBase.hashCode() == findById(id).hashCode()) {
+                    userInBase = null;
+                }
             }
         }
     }
 
+
     public User findUser(User user) {
-        for (int el = 0; el < users.length; el++) {
-            if (users[el] != null && user.equals(users[el]) && users[el].hashCode() == user.hashCode()) {
-                return user;
+        if (user != null) {
+            for (User userInBase : users) {
+                if (userInBase != null && userInBase.equals(user) && userInBase.hashCode() == user.hashCode())
+                    return user;
             }
         }
         return null;
-    }
 
+    }
 }
