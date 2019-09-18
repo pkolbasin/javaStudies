@@ -51,9 +51,10 @@ public class UserRepository {
     }
 
     public void delete(long id) {
-        if (findById(id) != null) {
+        User userInBase = findById(id);
+        if (userInBase != null) {
             for (int el = 0; el < users.length; el++) {
-                if (findById(id).equals(users[el]) && findById(id).hashCode() == users[el].hashCode()) {
+                if (userInBase.equals(users[el]) && userInBase.hashCode() == users[el].hashCode()) {
                     users[el] = null;
                 }
             }
