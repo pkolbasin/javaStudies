@@ -41,7 +41,7 @@ public class UserRepository {
         if (user != null && findById(user.getId()) != null) {
             for (int el = 0; el < users.length; el++) {
 
-                if (users[el].getId() == user.getId() && user.equals(users[el]) && user.hashCode() != users[el].hashCode()) {
+                if (user.getId() == users[el].getId() && !user.equals(users[el]) && user.hashCode() != users[el].hashCode()) {
                     return users[el] = user;
                 }
             }
@@ -53,7 +53,7 @@ public class UserRepository {
     public void delete(long id) {
         if (findById(id) != null) {
             for (int el = 0; el < users.length; el++) {
-                if (users[el].equals(findById(id)) && users[el].hashCode() == findById(id).hashCode()) {
+                if (findById(id).equals(users[el]) && findById(id).hashCode() == users[el].hashCode()) {
                     users[el] = null;
                 }
             }
