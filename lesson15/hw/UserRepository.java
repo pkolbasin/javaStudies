@@ -24,10 +24,10 @@ public class UserRepository {
 
     public User save(User user) {
         if (user != null && findById(user.getId()) == null) {
-            for (User userInBase : users) {
+            for (int el = 0; el < users.length; el++) {
 
-                if (userInBase == null) {
-                    return userInBase = user;
+                if (users[el] == null) {
+                    return users[el] = user;
                 }
             }
 
@@ -39,10 +39,10 @@ public class UserRepository {
 
     public User update(User user) {
         if (user != null && findById(user.getId()) != null) {
-            for (User userInBase : users) {
+            for (int el = 0; el < users.length; el++) {
 
-                if (userInBase.getId() == user.getId() && user.equals(userInBase) && user.hashCode() != userInBase.hashCode()) {
-                    return userInBase = user;
+                if (users[el].getId() == user.getId() && user.equals(users[el]) && user.hashCode() != users[el].hashCode()) {
+                    return users[el] = user;
                 }
             }
 
@@ -52,9 +52,9 @@ public class UserRepository {
 
     public void delete(long id) {
         if (findById(id) != null) {
-            for (User userInBase : users) {
-                if (userInBase.equals(findById(id)) && userInBase.hashCode() == findById(id).hashCode()) {
-                    userInBase = null;
+            for (int el = 0; el < users.length; el++) {
+                if (users[el].equals(findById(id)) && users[el].hashCode() == findById(id).hashCode()) {
+                    users[el] = null;
                 }
             }
         }
@@ -63,8 +63,8 @@ public class UserRepository {
 
     public User findUser(User user) {
         if (user != null) {
-            for (User userInBase : users) {
-                if (userInBase != null && userInBase.equals(user) && userInBase.hashCode() == user.hashCode())
+            for (int el = 0; el < users.length; el++) {
+                if (users[el] != null && users[el].equals(user) && users[el].hashCode() == user.hashCode())
                     return user;
             }
         }
