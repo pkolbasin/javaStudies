@@ -23,7 +23,7 @@ public class UserRepository {
 
 
     public User save(User user) {
-        if (user != null && users != null && findById(user.getId()) == null) {
+        if (users != null && user != null && findById(user.getId()) == null) {
             for (User userInBase : users) {
                 if (userInBase == null) {
                     userInBase = user;
