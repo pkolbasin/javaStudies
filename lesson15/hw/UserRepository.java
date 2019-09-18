@@ -25,12 +25,9 @@ public class UserRepository {
     public User save(User user) {
         if (user != null && findById(user.getId()) == null) {
             for (User userInBase : users) {
-
-                if (userInBase.equals(user)) {
-                    return null;
-                }
                 if (userInBase == null) {
-                    return userInBase = user;
+                    userInBase = user;
+                    return user;
                 }
             }
         }
